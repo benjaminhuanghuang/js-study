@@ -10,3 +10,7 @@ body{
     opacity: 1 !important;
     transition: opacity 500ms;
 }
+
+.color-red{
+    color:red;
+}

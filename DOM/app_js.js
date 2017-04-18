@@ -12,6 +12,9 @@ doc.getElementById("container-loader").addEventListener("click", function (e) {
                 ul.appendChild(li);
             });
             ul.classList.add("fade-in");
+            doc.querySelectorAll("#container ul li").forEach((element, index)=>{
+                element.classList.add("color-red")
+            });
         });
     });
 });

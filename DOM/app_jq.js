@@ -6,6 +6,6 @@ $("#container-loader").on("click", function (e) {
         obj.items.forEach((itemValue, index) => {
             $("<li>").html(itemValue).appendTo(ul);
         });
-        ul.fadeIn();
+        $("#container ul li").addClass("color-red");
     });
 });
