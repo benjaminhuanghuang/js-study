@@ -3,3 +3,5 @@
 
 # Intellij IDE project settings
 .idea
+
+node_modules/

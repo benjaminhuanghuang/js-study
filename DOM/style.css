@@ -1,0 +1,12 @@
+body{
+    font-size:1.5em
+}
+
+#container ul{
+    opacity: 0;
+}
+
+.fade-in{
+    opacity: 1 !important;
+    transition: opacity 500ms;
+}
