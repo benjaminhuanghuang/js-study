@@ -26,16 +26,15 @@ backAsync()
     });
 
 // Change callback to promise
-function updateQuotes(){
-    return new Promise((resolve, reject)=>{
+function getData(ticket) {
+    return new Promise((resolve, reject) => {
         //read data ...
-        if (err)
-        {
-            reject(err);
-        }
-        else{
-            
-            resolve(data);
-        }
-    });
+        request('http://api' + ticket, (error, res, body) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(body);
+            }
+        });
+    }); 
 };
