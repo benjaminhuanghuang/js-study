@@ -1,16 +1,19 @@
-function* counter()
-{
-    let count =1;
-    yield;
+let myArray = [1, 2, 3, 4, 5]
 
-    count+=yield;   // itr.next(5);
-    yield;
+let iterator = myArray[Symbol.iterator]();
 
-    count++;
-    return count;
-}
+console.log(iterator.next());
 
-const itr = counter();
 
-console.log();
-
+const obj = {
+    [Symbol.iterator]: function () {
+        return {
+            next: function () {
+                return {
+                    value: 1,
+                    done: true
+                };
+            }
+        };
+    }
+};
