@@ -12,6 +12,9 @@ y: sticky; matches only from the index indicated by the lastIndex property of th
 var regex = new RegExp("is","gi");
 //var regex = /is/gi;
 
+/*
+    Methods on RegExp
+*/
 //method that tests for a match in a string. It returns true or false.
 console.log(regex.test(str));
 
@@ -20,6 +23,9 @@ console.log(regex.exec(str));   // ["is", index: 5, input: "Is this This?"]
 // works with "g" option 
 console.log(regex.exec(str));   // ["is", index: 10, input: "Is this This?"]
 
+/*
+    Methods on String
+*/
 // returns all patterns matched ! str.match
 console.log(str.match(regex));    //["Is", "is", "is"]
 
