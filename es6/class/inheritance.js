@@ -1,28 +1,25 @@
-class Animal{
-  constructor(name, age)
-  {
+class Animal {
+  constructor(name, age) {
     this.name = name;
     this.age = age;
   }
 
-  shout()
-  {
+  shout() {
     return `My name is ${this.name}, age is ${this.age}`;
   }
 
-  static foo(){
+  static foo() {
     return 'Here is a static method';
   }
 }
 
-class Dog extends Animal{
-  constructor(name, age =3, color='black')
-  {
-    super(name, age);    // call super()
+class Dog extends Animal {
+  constructor(name, age = 3, color = 'black') {
+    super(name, age); // call super()
     this.color = color;
   }
 
-  shout(){
+  shout() {
     // Call method in super class
     return super.shout() + `, color is ${this.color}`;
   }
