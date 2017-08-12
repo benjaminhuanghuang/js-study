@@ -1,14 +1,17 @@
+console.log(this);   // {}
+
 function MyPizza() {
     this.slices = 0;
 
     function slice() {
-        // Doest NOT work
+        // Does NOT work
+        console.log(this);
         this.slices++;
     }
     slice();
 }
 
-var pizza = new MyPizza();
+var pizza = new MyPizza();    // 'this' is node object
 console.log("I have " + pizza.slices + " pizza.");
 
 function MyPizza_ES6() {
@@ -16,6 +19,7 @@ function MyPizza_ES6() {
 
     var slice = () => {
         // lexically this
+        console.log(this);
         this.slices++;
     }
     slice.call(this);

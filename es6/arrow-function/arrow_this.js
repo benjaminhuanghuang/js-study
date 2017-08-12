@@ -1,7 +1,18 @@
 // In node module, the top level this keyword is exports object.
 // It is empty by default
 
-console.log(this); 
+console.log("Empty this ", this);    // {}
+
+function fn(){
+    console.log(" this in fn() ", this);   // global context
+}
+fn();
+
+function fn(){
+    console.log(" this in fn() ", this);   // global context
+}
+fn();
+
 
 exports.i = "am exports";
 console.log(this); // {i: 'am exports'}
