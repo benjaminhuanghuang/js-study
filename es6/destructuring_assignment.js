@@ -1,6 +1,6 @@
 // Array
 let foo = ["1" , "2", "3"];
-let [one, two, three] = foo;
+let [one="default", two, three] = foo;
 console.log(`${one}, ${two}, ${three}`);
 
 // List match  
