@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <style>
+    #container {
+      font-family: monospace;
+      font-weight: bold;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="stopwatch.js"></script>
+</head>
+
+<body>
+  <div>
+    <input type="text" id="coins" placeholder='coins' value="1,2,3" />
+    <input type="text" id="sum" placeholder='sum' value="5" />
+  </div>
+  <input type="button" class="button" id="btnStart" value="Start">
+  <input type="button" class="button" id="btnStop" value="Stop">
+  <input type="button" class="button" id="btnReset" value="Reset">
+  <input type="button" class="button" id="btnGetTime" value="Get Time">
+
+  <div id="container"></div>
+  <script>
+    /**
+            * Returns the minimum number of coins from given set,
+            * which sum equals to given change.
+            * calculate([1, 2, 3], 5); // count 2
+            * calculate([25, 10, 5], 30); // count 2
+            * calculate([8, 1, 2, 6, 5], 11); // count 2
+          */
+    var stopWatch = new StopWatch();
+    $(document).ready(function () {
+
+      $("#btnStart").click(function () {
+        stopWatch.start();
+      });
+
+      $("#btnStop").click(function () {
+        stopWatch.stop();
+      });
+
+      $("#btnReset").click(function () {
+        stopWatch.reset();
+      });
+
+      $("#btnGetTime").click(function () {
+        $("#container").text(stopWatch.getTime());
+      });
+    });
+  </script>
+</body>
+
+</html>
