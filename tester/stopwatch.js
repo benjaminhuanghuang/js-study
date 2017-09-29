@@ -36,3 +36,4 @@ StopWatch.prototype.getTime = function(){
 }
 
  
+//https://jsfiddle.net/Daniel_Hug/pvk6p/
