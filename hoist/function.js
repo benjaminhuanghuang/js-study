@@ -2,7 +2,9 @@
 // Lecture 0: Overview, JavaScript
 thisIsHoisted();
 // thisIsNotHoisted();
-console.log(typeof thisIsNotFunction); // variable thisIsNotFunction is hoisted but it is undefined
+console.log(typeof thisIsNotFunction); 
+
+// variable thisIsNotFunction is hoisted but it is undefined
 // thisIsNotFunction(); // TypeError: thisIsNotFunction is not a function
 
 function thisIsHoisted()

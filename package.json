@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/benjaminhuanghuang/javascript-study#readme",
   "devDependencies": {
-    "lite-server": "^2.3.0"
+    "lite-server": "^2.3.0",
+    "moment":"^2.22.2"
   }
 }
