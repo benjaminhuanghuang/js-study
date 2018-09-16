@@ -1,8 +1,12 @@
 const moment = require('moment');
 
-const d1 = moment();
-console.log(d1);    // local time
-console.log("UTC time: ", d1.utc().format());    // local time
+const now = moment();   // current local time
+const startUTC = now.startOf('day').utc().format();
+const tomorrow = now.add(1, 'd');
+const endUTC = tomorrow.startOf('day').utc().format();
 
-const d2 = d1.add(1, 'd');
-console.log(d2);
+
+
+console.log("start UTC: ", startUTC);
+
+console.log("end UTC: ", endUTC);
