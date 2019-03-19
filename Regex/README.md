@@ -62,6 +62,72 @@ $：匹配输入的结尾。比如，/t$/ 不匹配 "eater" 中的 "t"，但匹�
 x(?=y)：仅匹配被y跟随的x；例如，/bruce(?=wayne)/，如果"bruce"后面跟着wayne，则匹配之。/bruce(?=wayne|banner)/ ，如果"bruce"后面跟着"wayne"或者banner，则匹配之。但是，"wayne" 和 "banner" 都不会在匹配结果中出现
 x(?!y)：仅匹配不被y跟随的x；例如，/\d+(?!\.)/ 只会匹配不被 "." 跟随的数字。
 
+## API
+
+### Methods on RegExp: test(), exec() and compile()
+1.test()
+检索字符串中指定的值。返回 true 或 false。这个是我们平时最常用的方法。
+
+ var reg=/hello \w{3,12}/;
+ alert(reg.test('hello js'));//false
+ alert(reg.test('hello javascript'));//true
+
+2.exec()
+检索字符串中指定的值。匹配成功返回一个数组，匹配失败返回null。
+
+var reg=/hello/;
+console.log(reg.exec('hellojs'));//['hello']
+console.log(reg.exec('javascript'));//null
+
+3.compile()
+compile() 方法用于改变 RegExp。
+compile() 既可以改变检索模式，也可以添加或删除第二个参数。
+
+
+var reg=/hello/;
+console.log(reg.exec('hellojs'));//['hello']
+reg.compile('Hello');
+console.log(reg.exec('hellojs'));//null
+reg.compile('Hello','i');
+console.log(reg.exec('hellojs'));//['hello']
+
+
+### Methods on String: match(), search(), replace(), split
+
+- 1.match()
+在字符串内检索指定的值,匹配成功返回存放匹配结果的数组，否则返回null。这里需要注意的一点事，如果没有设置全局匹配g，返回的数组只存第一个成功匹配的值。
+
+
+var reg1=/javascript/i;
+var reg2=/javascript/ig;
+console.log('hello Javascript Javascript Javascript'.match(reg1));
+//['Javascript']
+console.log('hello Javascript Javascript Javascript'.match(reg2));
+//['Javascript','Javascript','Javascript']
+
+- 2.search()
+在字符串内检索指定的值,匹配成功返回第一个匹配成功的字符串片段开始的位置，否则返回-1。
+
+var reg=/javascript/i;
+console.log('hello Javascript Javascript Javascript'.search(reg));//6
+
+- 3.replace()
+替换与正则表达式匹配的子串，并返回替换后的字符串。在不设置全局匹配g的时候，只替换第一个匹配成功的字符串片段。
+
+var reg1=/javascript/i;
+var reg2=/javascript/ig;
+console.log('hello Javascript Javascript Javascript'.replace(reg1,'js'));
+//hello js Javascript Javascript
+console.log('hello Javascript Javascript Javascript'.replace(reg2,'js'));
+//hello js js js
+
+- 4.split()
+把一个字符串分割成字符串数组。
+
+var reg=/1[2,3]8/;
+console.log('hello128Javascript138Javascript178Javascript'.split(reg));
+//['hello','Javascript','Javascript178Javascript']
+
 
 ## Tools
 - [Regex101] (https://regex101.com/)
