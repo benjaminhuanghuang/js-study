@@ -5,6 +5,7 @@ var firstMethod = function() {
        resolve({data: '123'});
      }, 2000);
   });
+  // return next promise
   return promise;
 };
 
