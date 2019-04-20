@@ -1,6 +1,6 @@
 
 //Sample 1
-const pizzaSizes= ["slice", "half-pie", "full-pie"];
+const pizzaSizes = ["slice", "half-pie", "full-pie"];
 const [slice, halfPie, fullPie] = pizzaSizes;
 
 
@@ -11,8 +11,33 @@ const [x, y, z] = point;
 
 console.log(x, y, z);
 
-// Sample 3
-// You can also ignore values when destructuring arrays. For example, const [x, , z] = point; ignores the y coordinate and discards it.
-const [x1, , z2] = point;
+// == Ignore value
+const things = ['red', 'basketball', 'paperclip', 'green', 'computer', 'earth', 'udacity', 'blue', 'dogs'];
 
-console.log(x, z);
+const [one, , , two, , , , three] = things;
+
+const colors = `List of Colors
+1. ${one}
+2. ${two}
+3. ${three}`;
+
+
+
+// == Default value
+var a, b;
+[a = 5, b = 7] = [1];
+console.log(a); // 1
+console.log(b); // 7
+
+// == Rest part
+var a, b, rest;
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(rest); // [30,40,50]
+
+// Swapping variables
+var a = 1;
+var b = 3;
+[a, b] = [b, a];
+console.log(a); // 3
+console.log(b); // 1
+

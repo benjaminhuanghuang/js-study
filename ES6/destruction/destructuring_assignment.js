@@ -1,7 +1,3 @@
-// Array
-let foo = ["1" , "2", "3"];
-let [one="default", two, three] = foo;
-console.log(`${one}, ${two}, ${three}`);
 
 // List match  
 var [a, b, ...rest] = [1, 2, 3, 4, 5];
