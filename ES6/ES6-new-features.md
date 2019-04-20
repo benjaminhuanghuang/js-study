@@ -1,5 +1,10 @@
-## ES 6 syntax changes
-  let , const
+## Reference
+-[ES6 - Udacity]
+
+## ES 6 Syntax changes
+### let , const
+
+### Template literal (`${expression}` )
 
   => function 
 
@@ -11,7 +16,6 @@
 
   For-of loop
 
-  Template literal (`${expression}` )
 
   Destructuring for array and object ([], {})
 
