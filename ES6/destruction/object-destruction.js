@@ -15,3 +15,5 @@ const person = {
 
 const { first: firstName } = person;
 console.log(firstName); // Wes
+
+

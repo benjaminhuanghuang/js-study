@@ -35,7 +35,12 @@ IceCream.prototype.addScoop = function () {
 dessert = new IceCream();
 dessert.addScoop();
 
-// adds scoop to ice cream using => function
+/*
+When addScoop() is called, the value of this inside addScoop() refers to dessert. 
+Since an arrow function is passed to setTimeout(), it's using its surrounding context to determine 
+what this refers to inside itself. So since this outside of the arrow function refers to dessert, 
+the value of this inside the arrow function will also refer to dessert.
+*/
 IceCream.prototype.addScoop = function () {
   setTimeout(() => { // an arrow function is passed to setTimeout
     this.scoops++;
@@ -46,3 +51,18 @@ IceCream.prototype.addScoop = function () {
 
 dessert = new IceCream();
 dessert.addScoop();
+
+
+/*
+arrow functions inherit their this value from their surrounding context. 
+Outside of the addScoop() method, the value of this is the global object. 
+So if addScoop() is an arrow function, the value of this inside addScoop() is the global object.
+
+Which then makes the value of this in the function passed to setTimeout() also set to the global object!
+*/
+IceCream.prototype.addScoop = () => { // addScoop is now an arrow function
+  setTimeout(() => {
+    this.scoops++;
+    console.log('scoop added!');
+  }, 0.5);
+};
