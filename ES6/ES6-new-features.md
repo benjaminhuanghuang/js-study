@@ -72,26 +72,25 @@ console.log(mergedObj);
 
 ### function default parameters and rest parameters
 
-  
-
-  Spread array or object
-
-
-
-
-
-
 ## Class
+- Class, super, extends
+
+## Symbol
+
+## Iterators and Generators
 
 ## Modules
 
 
-## Iterators and Generators
+
 
 ## Promises
 
-## Maps and Sets
-
+## Maps, WeakMaps and Sets, WeakSet
+- a WeakSet can only contain objects
+- a WeakSet is not iterable which means it can’t be looped over
+- a WeakSet does not have a .clear() method
+When an object is deleted, the object will also be deleted from the WeakSet when garbage collection runs. This makes WeakSets useful in situations where you want an efficient, lightweight solution for creating groups of objects.
 
 ## Reflect API
 

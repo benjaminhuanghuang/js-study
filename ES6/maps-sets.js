@@ -8,6 +8,9 @@ var m = new Map();
 m.set("hello", "something");
 m.set(s, 34);
 console.log(m.get(s) == 34); //true
+// for each
+m.forEach((value, key) => console.log(key, value));
+
 
 var s = new Set();
 s.add("hello").add("something").add("hello");
