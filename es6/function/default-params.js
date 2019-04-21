@@ -15,3 +15,17 @@ function isEqual(num = 11, compare)
 console.log(isEqual(11));
 
 //function isEqual(num = compare, compare = 10)   //Error: compare is not defined
+
+/*
+Old style
+*/
+function greet(name, greeting) {
+  name = (typeof name !== 'undefined') ? name : 'Student';
+  greeting = (typeof greeting !== 'undefined') ? greeting : 'Welcome';
+
+  return `${greeting} ${name}!`;
+}
+/* ES6 Style*/
+function greet(name = 'Student', greeting = 'Welcome') {
+  return `${greeting} ${name}!`;
+}

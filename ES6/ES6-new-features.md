@@ -48,11 +48,29 @@ let gemstone = {
 ```
 
 ### Spread operator
+array
 ```
+const fruits = ["apples", "bananas", "pears"];
+const vegetables = ["corn", "potatoes", "carrots"];
+
+const produce = [...fruits, ...vegetables];
 ```
+object
+```
+var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+
+var clonedObj = { ...obj1 }; // Object { foo: "bar", x: 42 }
+console.log(clonedObj);
+
+var mergedObj = { ...obj1, ...obj2 }; // Object { foo: "baz", x: 42, y: 13 }
+console.log(mergedObj);
+```
+
+## ES 6 Function changes
 ###  => function 
 
-  function default parameters and rest parameters
+### function default parameters and rest parameters
 
   
 
