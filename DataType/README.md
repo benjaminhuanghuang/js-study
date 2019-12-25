@@ -1,3 +1,6 @@
+Primitives are copied by their value
+Objects are copied by their refernce.
+
 ## Primitives
 These 6 types are considered to be primitives. A primitive is not an object and has no methods of its own. 
 All primitives are immutable.
@@ -30,3 +33,16 @@ typeof null                 // 'object'
 - RegExp
 - Math
 - Set
+
+## Value Types
+- Number
+- String
+- Boolean
+- Symbol
+- undefined
+- null
+
+## Reference Types
+Object
+Function
+Array
