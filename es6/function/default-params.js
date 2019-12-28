@@ -25,7 +25,7 @@ function greet(name, greeting) {
 
   return `${greeting} ${name}!`;
 }
-/* ES6 Style*/
+/* ES6 Style */
 function greet(name = 'Student', greeting = 'Welcome') {
   return `${greeting} ${name}!`;
 }
