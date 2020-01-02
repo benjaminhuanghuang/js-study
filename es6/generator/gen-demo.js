@@ -1,5 +1,5 @@
 //https://medium.freecodecamp.org/the-complete-javascript-handbook-f26b2c71719c
-function *calculator(input) {
+function* calculator(input) {
   var doubleThat = 2 * (yield (input / 2))
   var another = yield (doubleThat)
   return (input * doubleThat * another)
