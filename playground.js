@@ -16,3 +16,30 @@ function createAnimalTradingCardHTML(animal) {
 
   return cardHTML;
 }
+
+
+function joinedLogger(level, sep) {
+  // write your code here
+  let f = (...messages)=>{
+    let s = [];
+    for( let msg of messages )
+    {
+        if(msg.level >= level)
+        {
+            s.push(msg.text)
+        }
+    }
+    console.log(s.join(sep));
+  }
+
+  return f;
+}
+
+
+const myLog = joinedLogger(21, ',');
+
+  let messages = [];
+  messages.push({level: 40, text:'foo'});
+  messages.push({level: 90, text:'bar'});
+
+  myLog(...messages);

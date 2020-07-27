@@ -1,3 +1,8 @@
+/*
+Tricky Javascript code snippets asked in the interview
+*/
+
+
 function display() {
   var a = b = 10;
 }

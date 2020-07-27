@@ -1,3 +1,8 @@
+/*
+  Tricky Javascript code snippets asked in the interview
+*/
+
+
 var number = 10;
 var display = function () {
   console.log(number);

@@ -1,3 +1,7 @@
+/*
+Tricky Javascript code snippets asked in the interview
+*/
+
 const user = {
   name: 'Raj',
   location: {
