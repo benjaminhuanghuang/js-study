@@ -2,6 +2,7 @@
 - JavaScript has just one number type. i.e 5 and 5.12 are the same type.
 - JavaScript uses the “double-precision 64-bit format IEEE 754” standard
 
+Number 在 JavaScript 中被表示为双精度浮点数。这意味着它们的精度有限。Number.MAX_SAFE_INTEGER 常数给出了可以安全递增的最大可能整数。它的值是 2**53-1。
 
 All JavaScript numbers are stored as double floating point numbers. 
 JavaScript will trick you into thinking that your var x = 1 is an integer, but really it’s a float and equal to 1.0
