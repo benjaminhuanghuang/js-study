@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content-wrapper">
+    <div class="content">
+      <a href="#" class="link">Click</a>
+    </div>
+  </div>
+</body>
+<script>
+  document.querySelector('#content-wrapper').addEventListener('click', ()=>{
+    console.log('Wrapper');
+  });
+
+  document.querySelector('.content').addEventListener('click', (e)=>{
+    // 阻止 DOM 元素继续向下冒泡
+    e.stopPropagation();
+    console.log('Conent');
+  });
+
+
+  document.querySelector('.link').addEventListener('click', (e)=>{
+    // 通知浏览器不执行与事件关联的默认动作
+    // 但是event会冒泡到parent element
+    e.preventDefault();
+    console.log('link');
+  });
+</script>
+</html>
