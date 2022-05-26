@@ -20,6 +20,7 @@ function debounce_leading(func, timeout = 300){
 function saveInput(){
   console.log('Saving data');
 }
+
 const processChange = debounce(() => saveInput());
 
 
