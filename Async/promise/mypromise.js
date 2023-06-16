@@ -36,4 +36,3 @@ let p = new Promise(resolve => {
 }).then((tip) => {
   console.log(tip);
 })
-
