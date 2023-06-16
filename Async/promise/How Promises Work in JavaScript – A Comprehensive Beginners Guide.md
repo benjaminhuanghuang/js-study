@@ -110,6 +110,18 @@ function handleReject(reason) {
 promise.then(handleResolve, handleReject);
 ```
 
+create an immediately resolved/rejected promise
+```
+Promise.resolve("Successful").then((result) => console.log(result));
+// Successful
+
+Promise.reject("Not successful").then(
+  () => {
+    /*Empty Callback if Promise is fulfilled*/
+  },
+  (reason) => console.error(reason)
+);
+```
 
 Update nested callback code:
 ```
@@ -120,18 +132,25 @@ fetchResource(url)
 ```
 ## Handle Errors in a Promise
 You can also use the .catch() method in a chain of promises. It catches the first error it encounters in the chain.
+.catch() to check for errors in a group of promises before proceeding with further asynchronous operations.
 
-
-Update the code using .catch() method:
 ```
 fetchResource(url)
   .then(handleResult)
   .then(handleNewResult)
-  .then(handleAnotherResult)
-  .catch(failureCallback);
+  .catch(failureCallback)
+  // Check for Errors in the above group of promises before proceeding
+  .then(handleAnotherResult);
 ```
 
-
+Using finally() helps prevent possible code repetition in .then() and .catch(). 
+It is for operations you must run whether there is an error or not.
+```
+fetchResource(url)
+  .then(handleResult)
+  .then(handleNewResult)
+  .finally(onFinallyHandle);
+```
 
 ## Handle Many Promises at Once
 ```
@@ -140,3 +159,43 @@ Promise.race()
 Promise.any()
 Promise.allSettled()
 ```
+Promise.all() runs all promises at the same time.
+The array Promise.all() resolves with will contain the resolve values of individual promises in the input array.
+If any promise in the input array was rejected, Promise.all() will return a rejected promise with a reason. 
+This is why the total time it would take Promise.all() to return a value is roughly the time it would take the longest promise in the array to finish.
+
+Promise.race() will return the promise with the shortest execution time in an array of promises.
+If the promise with the shortest execution time happens to be rejected with a reason, Promise.race() returns a rejected promise and the reason why the fastest promise was rejected.
+
+
+Promise.any() waits for any promise in the array to be resolved and would immediately return it as the output
+If none of the promises in the array are resolved, Promise.any() returns a rejected promise.
+
+
+Promise.any() and Promise.race() are similar, except that Promise.any() will return the `fastest promise to complete and be resolved`, 
+while Promise.race() will return the `fastest promise` to complete and does not care if it is resolved or not.
+
+Promise.allSettled() return after all the input promises are settled. It does not care if any individual promise in the input array rejected. 
+The difference is Promise.all() can only be successful if all the promises in the input are resolved, 
+while Promise.allSettled() does not care about the status of the input promises.
+
+
+## Job Queue
+```
+Promise.resolve("This is a resolved value").then(console.log);
+setTimeout(console.log, 0, "This is a value after the timeout");
+console.log("This is a normal log");
+```
+
+The output of the above code is:
+```
+This is a normal log
+This is a resolved value
+This is a value after the timeout
+```
+Why does the output from the promise come next? 
+
+Well, the simple answer is that a `promise is faster than any other async` implementation in JavaScript. 
+
+The JavaScript Runtime actually has these two queues—the Callback (or Macrotask) Queue and the Job (or Microtask) Queue. Shortly before the event loop starts calling the functions in the Callback Queue, it calls `all the instructions` on the Job Queue. The callback of a promise stays in the Job Queue so the event loop calls it first.
+![](./event-loop.gif)
