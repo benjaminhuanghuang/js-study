@@ -29,3 +29,10 @@ HTML + CSS + vanilla JS
 Adjust position after collision
 
 ## sprite animation
+1:17
+
+
+## Debug mode 1:17:00
+
+
+## Player boundaries 1:21:00
