@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
-  
+
   canvas.width = 1280;
   canvas.height = 720;
 
@@ -19,9 +19,9 @@ window.addEventListener("load", function () {
       this.speedY = 0;
       this.dx = 0;
       this.dy = 0;
-      this.speedModifier = 5;
+      this.speedModifier = 3;
       this.spriteWidth = 255;
-      this.spriteHeight = 255;
+      this.spriteHeight = 256;
       this.width = this.spriteWidth;
       this.height = this.spriteHeight;
       // in in frame
@@ -92,20 +92,19 @@ window.addEventListener("load", function () {
       this.collisionY += this.speedY * this.speedModifier;
       this.spriteX = this.collisionX - this.width * 0.5;
       this.spriteY = this.collisionY - this.height * 0.5 - 100;
-      
+
       // horizontal boundaries
-      if(this.collisionX < 0 + this.collisionRadius) {
+      if (this.collisionX < 0 + this.collisionRadius) {
         this.collisionX = 0 + this.collisionRadius;
-      } else if(this.collisionX > this.game.width - this.collisionRadius) {
+      } else if (this.collisionX > this.game.width - this.collisionRadius) {
         this.collisionX = this.game.width - this.collisionRadius;
       }
 
       // vertical boundaries
-      if(this.collisionY < 0 + this.game.topMargin + this.collisionRadius) {
+      if (this.collisionY < 0 + this.game.topMargin + this.collisionRadius) {
         this.collisionY = this.game.topMargin + this.collisionRadius;
-      }
-      else if (this.collisionY > this.game.height - this.collisionRadius) {
-        this.collisionY = this.game.height -this.collisionRadius;
+      } else if (this.collisionY > this.game.height - this.collisionRadius) {
+        this.collisionY = this.game.height - this.collisionRadius;
       }
 
       // collision with obstacles
@@ -171,6 +170,18 @@ window.addEventListener("load", function () {
     }
   }
 
+  class Egg {
+    constructor(game) {
+      this.game = game;
+      this.collisionX = Math.random * this.game.width;
+      this.collisionY = Math.random * this.game.height;
+      this.collisionRadius = 40;
+      this.image = document.getElementById("egg");
+      this.spriteWidth = 110;
+
+    }
+  }
+
   class Game {
     constructor() {
       this.canvas = canvas;
@@ -178,6 +189,9 @@ window.addEventListener("load", function () {
       this.height = canvas.height;
       this.topMargin = 260;
       this.debug = true;
+      this.fps = 70;
+      this.timer = 0;
+      this.interval = 1000 / this.fps;
 
       this.player = new Player(this);
       this.numberOfObstacles = 5;
@@ -215,12 +229,18 @@ window.addEventListener("load", function () {
       });
     }
 
-    render(context) {
-      this.player.draw(context);
-      this.player.update();
-      this.obstacles.forEach((obstacle) => {
-        obstacle.draw(context);
-      });
+    render(context, deltaTime) {
+      if (this.timer > this.interval) {
+        // animate to next frame
+        context.clearRect(0, 0, this.width, this.height);
+        this.obstacles.forEach((obstacle) => {
+          obstacle.draw(context);
+        });
+        this.player.draw(context);
+        this.player.update();
+        this.timer = 0;
+      }
+      this.timer += deltaTime;
     }
 
     checkCollision(a, b) {
@@ -269,11 +289,14 @@ window.addEventListener("load", function () {
   game.init();
   console.log(game);
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    game.render(ctx);
+  let lastTime = 0;
+  function animate(timeStamp) {
+    const deltaTime = timeStamp - lastTime;
+    lastTime = timeStamp;
+
+    game.render(ctx, deltaTime);
     window.requestAnimationFrame(animate);
   }
 
-  animate();
+  animate(0);
 });

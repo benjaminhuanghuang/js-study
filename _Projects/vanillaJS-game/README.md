@@ -36,3 +36,8 @@ Adjust position after collision
 
 
 ## Player boundaries 1:21:00
+
+## FPF (frame per second) 1:25:00
+
+
+## Egg class 1:34:03
