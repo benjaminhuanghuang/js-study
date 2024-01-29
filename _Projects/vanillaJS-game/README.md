@@ -25,3 +25,7 @@ HTML + CSS + vanilla JS
 
 
 ## Physics
+
+Adjust position after collision
+
+## sprite animation
