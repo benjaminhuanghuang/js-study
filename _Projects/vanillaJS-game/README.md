@@ -41,3 +41,20 @@ Adjust position after collision
 
 
 ## Egg class 1:34:03
+
+
+
+## Draw order 1:51:36
+
+```js
+ this.gameObjects.sort((a, b) => a.collisionY - b.collisionY);
+```
+
+
+## Enemy class 1:59:00
+
+
+## Larva class 2:11:06
+
+
+## Particle 2:40:33
