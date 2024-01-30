@@ -34,6 +34,14 @@ window.addEventListener("load", function () {
       this.image = document.getElementById("bull");
     }
 
+    restart() {
+      this.collisionX = this.game.width * 0.5;
+      this.collisionY = this.game.height * 0.5;
+      this.spriteX = this.collisionX - this.width * 0.5;
+      this.spriteY = this.collisionY - this.height * 0.5 - 100;
+
+    }
+
     draw(context) {
       context.drawImage(
         this.image,
@@ -553,6 +561,9 @@ window.addEventListener("load", function () {
         if (e.key === "d") {
           this.debug = !this.debug;
         }
+        else if (e.key === "r") {
+         this.restart();
+        }
       });
     }
 
@@ -606,6 +617,9 @@ window.addEventListener("load", function () {
         context.fillRect(0, 0, this.width, this.height);
         context.fillStyle = "white";
         context.textAlign = "center";
+        context.shadowOffsetX = 4;
+        context.shadowOffsetY = 4;
+        context.shadowColor = 'black';
         let message1, message2;
         if (this.lostHatchlings <= 5) {
           message1 = "Bullseye!!!";
@@ -653,7 +667,25 @@ window.addEventListener("load", function () {
         (object) => !object.markedForDeletion
       );
     }
+    restart() {
+      this.player.restart();
+   
+      this.obstacles = [];
+      this.eggs = [];
+      this.enemies = [];
+      this.hatchlings = [];
+      this.particles = [];
 
+      this.mouse = {
+        x: this.width * 0.5,
+        y: this.height * 0.5,
+        pressed: false,
+      };
+      this.score = 0;
+      this.lostHatchlings = 0;
+      this.gameOver = false;
+      this.init();
+    }
     init() {
       for (let i = 0; i < 3; i++) {
         this.addEnemy();
