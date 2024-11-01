@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 /*
   await keyword 接受一个promise, 把promise resolve的结果赋给 "=" 左边的变量
-  async funciton 会返回一个promise, 因此async funciton can be used in promise chain
+  async function 会返回一个promise, 因此async function can be used in promise chain
 */
 async function getZhiHuColumn(id) {
   const url = `https://zhuanlan.zhihu.com/api/columns/${id}`;
@@ -11,7 +11,7 @@ async function getZhiHuColumn(id) {
 }
 
 /*
- Use async funciton in promise chain
+ Use async function in promise chain
 */
 getZhiHuColumn("feweekly").then((column) => {
   console.log(`Name: ${column.name}`);

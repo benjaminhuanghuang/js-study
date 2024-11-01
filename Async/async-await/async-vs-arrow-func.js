@@ -7,7 +7,7 @@ const getZhiHuColumn = async (id) => {
 };
 
 /*
- Use async funciton in promise chain
+ Use async function in promise chain
 */
 getZhiHuColumn("feweekly").then((column) => {
   console.log(`Name: ${column.name}`);
