@@ -1,6 +1,7 @@
 ## Promise vs Async
+
 Promise
-···
+```js
 const makeRequest = () =>
   getJSON()
     .then(data => {

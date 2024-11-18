@@ -36,7 +36,7 @@ new Promise(executor);
 
 The function passed to new Promise is called the executor. 
 
-The execuor has 2 arguments resolve and reject. 
+The executor has 2 arguments resolve and reject. 
 
 The then() method returns a Promise. It takes up to two arguments: callback functions for the success and failure cases of the Promise.
 */
