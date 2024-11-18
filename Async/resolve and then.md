@@ -2,7 +2,10 @@
 
 
 ## resolve()
-Promise.resolve() is a method that creates a resolved Promise. 
+Promise.resolve(value) is a method that creates a `resolved Promise`. 
+If the value is a Promise, it returns that same Promise (does not wrap it again).
+If the value is not a Promise, it wraps the value into a resolved Promise.
+
 It is often used to convert a value into a Promise that resolves immediately or to ensure a function always returns a Promise.
 
 ```js
