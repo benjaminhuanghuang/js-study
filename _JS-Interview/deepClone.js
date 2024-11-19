@@ -1,14 +1,19 @@
-function deepeclone(value) {
+function deepClone(value) {
   if (typeof value !== "object" || value === null) {
     return value;
   }
 
-  const obj = Array.isArray(value)? [] : {};
+  const result = Array.isArray(value) ? [] : {};
+
+  Object.setPrototypeOf(result, Object.getPrototypeOf(value)); // key the functions
 
   for (let key in value) {
-    obj[key] = deepeclone(value[key]);
+    if (value.hasOwnProperty(key)) {
+      // key the functions
+      result[key] = deepClone(value[key]);
+    }
   }
-  return value;
+  return result;
 }
 
 const obj = {
@@ -18,5 +23,18 @@ const obj = {
   d: function () {},
 };
 
-obj.e = obj;
 console.log(deepClone(obj));
+
+class Test {
+  constructor() {
+    this.a = 1;
+    this.b = 2;
+  }
+  c() {
+    console.log("c");
+  }
+}
+
+Test.prototype.d = "d"; // clone this or not
+const t = new Test();
+console.log("Test object: ", deepClone(t)); // clone this or not
